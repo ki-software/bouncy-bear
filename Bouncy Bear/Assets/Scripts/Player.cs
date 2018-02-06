@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
 	public float gravity = 10;
 	public float verticalVelocity = 1;
 	public float horizontalDrag = 0.01f;
+	public float bounceVelocity = 1;
 
 	private PlayerMovementState _moveState = PlayerMovementState.FALLING;
 
@@ -102,5 +103,9 @@ public class Player : MonoBehaviour {
 		if (other.CompareTag("Floor")) {
 			rb.velocity = new Vector3 (rb.velocity.x, verticalVelocity, 0);
 		}
+	}
+
+	public void BounceUpAway() {
+		rb.velocity = new Vector3 (-Mathf.Sign(rb.velocity.x), 0.5f, 0) * bounceVelocity;
 	}
 }
