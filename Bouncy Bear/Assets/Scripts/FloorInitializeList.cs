@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class FloorEditMode : MonoBehaviour {
+public class FloorInitializeList : MonoBehaviour {
 
     // Use this for initialization
     void Start()
