@@ -100,12 +100,16 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (other.CompareTag("Floor")) {
-			rb.velocity = new Vector3 (rb.velocity.x, verticalVelocity, 0);
+		if (other.transform.root.CompareTag("Floor")) {
+			GameController.GC.PlayerHitFloor ();
 		}
 	}
 
-	public void BounceUpAway() {
+	public void BounceFloor() {
+		rb.velocity = new Vector3 (rb.velocity.x, verticalVelocity, 0);
+	}
+
+	public void BounceWall() {
 		rb.velocity = new Vector3 (-Mathf.Sign(rb.velocity.x), 0.5f, 0) * bounceVelocity;
 	}
 }
