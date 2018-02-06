@@ -17,6 +17,7 @@ public class Floor : MonoBehaviour {
         int n = _floorPillars.Count;
         GameObject newObj = Instantiate<GameObject>(floorPillar, Vector3.zero, Quaternion.identity, gameObject.transform);
         newObj.transform.localPosition = new Vector3(n, 0, 0);
+        newObj.name = "FloorPillar (" + n + ")";
         _floorPillars.Add(newObj.GetComponent<FloorPillar>());
     }
     public void RemoveFloorPillar()
