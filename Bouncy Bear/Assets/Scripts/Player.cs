@@ -72,7 +72,8 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		rb = GetComponent<Rigidbody> ();
+        gameObject.SetActive(true);
+        rb = GetComponent<Rigidbody> ();
 	}
 	
 	// Update is called once per frame
@@ -99,8 +100,20 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (other.CompareTag("Floor")) {
+		if (other.CompareTag("Floor"))
+        {
 			rb.velocity = new Vector3 (rb.velocity.x, verticalVelocity, 0);
 		}
-	}
+
+        if (other.CompareTag("Enemy"))
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Debug.Log("Player Died");
+        gameObject.SetActive(false);
+    }
 }
