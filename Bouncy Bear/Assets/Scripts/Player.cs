@@ -34,6 +34,7 @@ public class Player : MonoBehaviour {
 	void Drag() {
 		if (Mathf.Abs(rb.velocity.x) < 0.0001) {
 			rb.velocity = new Vector3 (0, rb.velocity.y, 0);
+			return;
 		}
 		rb.AddForce (-Mathf.Sign(rb.velocity.x) * horizontalDrag, 0, 0);
 	}
@@ -41,6 +42,8 @@ public class Player : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		if (other.CompareTag("Floor")) {
 			rb.velocity = new Vector3 (rb.velocity.x, verticalVelocity, 0);
+//			rb.velocity = new Vector3 (rb.velocity.x, 0, 0);
+//			gravity = 0;
 		}
 	}
 }
