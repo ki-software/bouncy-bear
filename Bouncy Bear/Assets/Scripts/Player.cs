@@ -9,6 +9,65 @@ public class Player : MonoBehaviour {
 	public float verticalVelocity = 1;
 	public float horizontalDrag = 0.01f;
 
+	private PlayerMovementState _moveState = PlayerMovementState.FALLING;
+
+	public PlayerMovementState moveState
+	{
+		get { return _moveState;  }
+		set
+		{
+			if (value == PlayerMovementState.FALLING &&
+				(_moveState == PlayerMovementState.RISING)) {
+				// pass
+			}
+			else if (value == PlayerMovementState.RISING &&
+					(_moveState == PlayerMovementState.POST_BOUNCEDOWN &&
+					 _moveState == PlayerMovementState.POST_BOUNCELEFT &&
+					 _moveState == PlayerMovementState.POST_BOUNCERIGHT)) {
+				// pass
+			} 
+			else if (value == PlayerMovementState.DYING &&
+					(_moveState == PlayerMovementState.FALLING &&
+					 _moveState == PlayerMovementState.POST_BOUNCELEFT &&
+					 _moveState == PlayerMovementState.POST_BOUNCERIGHT)) {
+				// pass
+			} 
+			else if (value == PlayerMovementState.PRE_BOUNCEDOWN &&
+					(_moveState == PlayerMovementState.FALLING)) {
+				// pass
+			}
+			else if (value == PlayerMovementState.POST_BOUNCEDOWN &&
+					(_moveState == PlayerMovementState.PRE_BOUNCEDOWN)) {
+				// pass
+			}
+			else if (value == PlayerMovementState.PRE_BOUNCELEFT &&
+					(_moveState == PlayerMovementState.FALLING &&
+					 _moveState == PlayerMovementState.RISING &&
+					 _moveState == PlayerMovementState.DYING)) {
+				// pass
+			}
+			else if (value == PlayerMovementState.POST_BOUNCELEFT &&
+					(_moveState == PlayerMovementState.PRE_BOUNCELEFT)) {
+				// pass
+			}
+			else if (value == PlayerMovementState.PRE_BOUNCERIGHT &&
+					(_moveState == PlayerMovementState.FALLING &&
+					 _moveState == PlayerMovementState.RISING &&
+					 _moveState == PlayerMovementState.DYING)) {
+				// pass
+			}
+			else if (value == PlayerMovementState.POST_BOUNCERIGHT &&
+					(_moveState == PlayerMovementState.PRE_BOUNCERIGHT)) {
+				// pass
+			}
+			else {
+				Debug.Log("WARNING: Illegal Parameter / State for Player.moveState.set()" + value + ", " + _moveState);
+			}
+
+			_moveState = value;
+		}
+	}
+
 	private Rigidbody rb;
 
 	// Use this for initialization
@@ -42,8 +101,6 @@ public class Player : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		if (other.CompareTag("Floor")) {
 			rb.velocity = new Vector3 (rb.velocity.x, verticalVelocity, 0);
-//			rb.velocity = new Vector3 (rb.velocity.x, 0, 0);
-//			gravity = 0;
 		}
 	}
 }
