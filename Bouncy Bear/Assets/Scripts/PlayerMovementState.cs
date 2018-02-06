@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovementState : MonoBehaviour {
+public enum PlayerMovementState {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	FALLING, RISING, DYING,
+	PRE_BOUNCEDOWN, POST_BOUNCEDOWN,
+	PRE_BOUNCELEFT, POST_BOUNCELEFT,
+	PRE_BOUNCERIGHT, POST_BOUNCERIGHT,
 }
