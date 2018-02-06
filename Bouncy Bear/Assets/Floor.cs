@@ -4,13 +4,32 @@ using UnityEngine;
 
 public class Floor : MonoBehaviour {
 
-    public FloorPillar[] floorPillars;
-    // private int floorPillarCount = 10;
+    public GameObject floorPillar;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    private List<FloorPillar> _floorPillars = new List<FloorPillar>();
+    public List<FloorPillar> floorPillars
+    {
+        get { return _floorPillars; }
+    }
+
+    public void AddFloorPillar()
+    {
+        int n = _floorPillars.Count;
+        GameObject newObj = Instantiate<GameObject>(floorPillar, Vector3.zero, Quaternion.identity, gameObject.transform);
+        newObj.transform.localPosition = new Vector3(n, 0, 0);
+        _floorPillars.Add(newObj.GetComponent<FloorPillar>());
+    }
+    public void RemoveFloorPillar()
+    {
+        GameObject rmObj = _floorPillars[_floorPillars.Count - 1].gameObject;
+        _floorPillars.RemoveAt(_floorPillars.Count - 1);
+        DestroyImmediate(rmObj);
+    }
+    public void DebugFloorPillar()
+    {
+        Debug.Log("floorPillars.Count = " + floorPillars.Count);
+    }
+    // private int floorPillarCount = 10;
 	
 	// Update is called once per frame
 	void Update () {
@@ -20,7 +39,7 @@ public class Floor : MonoBehaviour {
     public FloorPillar GetRandomSpace()
     {
         List<FloorPillar> f = new List<FloorPillar>();
-        foreach (FloorPillar fp in floorPillars)
+        foreach (FloorPillar fp in _floorPillars)
         {
             if (fp.floorState == FloorState.DOWN)
             {
@@ -34,19 +53,19 @@ public class Floor : MonoBehaviour {
 
     public List<FloorState> GenerateRandomFloor(int voids)
     {
-        List<FloorState> retval = new List<FloorState>(new FloorState[floorPillars.Length]);
+        List<FloorState> retval = new List<FloorState>(new FloorState[_floorPillars.Count]);
         List<int> unselected = new List<int>();
         List<int> selected = new List<int>();
 
         // Populate unselected list
-        for (int i = 0; i < floorPillars.Length; i++)
+        for (int i = 0; i < _floorPillars.Count; i++)
         {
             unselected.Add(i);
         }
 
         int selectionCount = 3;
 
-        if (selectionCount >= floorPillars.Length)
+        if (selectionCount >= _floorPillars.Count)
         {
             Debug.LogError("Invalid selection count!");
         }
@@ -73,20 +92,20 @@ public class Floor : MonoBehaviour {
 
     public void ChangeFloor(List<FloorState> next)
     {
-        if (next.Count != floorPillars.Length)
+        if (next.Count != _floorPillars.Count)
         {
             Debug.LogError("Next Array Size != Current Array Size");
         }
 
         for (int i = 0; i < next.Count; i++)
         {
-            if (next[i] == FloorState.DOWN && (floorPillars[i].floorState == FloorState.UP || floorPillars[i].floorState == FloorState.RISING))
+            if (next[i] == FloorState.DOWN && (_floorPillars[i].floorState == FloorState.UP || _floorPillars[i].floorState == FloorState.RISING))
             {
-                floorPillars[i].floorState = FloorState.FALLING;
+                _floorPillars[i].floorState = FloorState.FALLING;
             }
-            else if (next[i] == FloorState.UP && (floorPillars[i].floorState == FloorState.DOWN || floorPillars[i].floorState == FloorState.FALLING))
+            else if (next[i] == FloorState.UP && (_floorPillars[i].floorState == FloorState.DOWN || _floorPillars[i].floorState == FloorState.FALLING))
             {
-                floorPillars[i].floorState = FloorState.RISING;
+                _floorPillars[i].floorState = FloorState.RISING;
             }
         }
     }
