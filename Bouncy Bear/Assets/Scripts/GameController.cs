@@ -11,6 +11,9 @@ public class GameController : MonoBehaviour {
 	private GameObject floorObject;
 	private Floor floor;
 
+	private uint score;
+	private uint combo;
+
 	// Use this for initialization
 	void Start () {
 		GC = this;
@@ -23,6 +26,7 @@ public class GameController : MonoBehaviour {
 		
 	}
 
+
 	public void PlayerHitFloor() {
 		ChangeFloor ();
 		player.BounceFloor ();
@@ -31,6 +35,15 @@ public class GameController : MonoBehaviour {
 	public void PlayerHitWall() {
 		player.BounceWall ();
 	}
+
+	public void PlayerHitCoin() {
+	
+	}
+
+	public void PlayerDie() {
+		
+	}
+
 
 	void InitObject() {
 		playerObject = GameObject.FindGameObjectWithTag ("Player");
