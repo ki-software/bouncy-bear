@@ -73,7 +73,8 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		rb = GetComponent<Rigidbody> ();
+        gameObject.SetActive(true);
+        rb = GetComponent<Rigidbody> ();
 	}
 	
 	// Update is called once per frame
@@ -103,7 +104,18 @@ public class Player : MonoBehaviour {
 		if (other.transform.root.CompareTag("Floor")) {
 			GameController.GC.PlayerHitFloor ();
 		}
-	}
+
+        if (other.CompareTag("Enemy"))
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Debug.Log("Player Died");
+        gameObject.SetActive(false);
+    }
 
 	public void BounceFloor() {
 		rb.velocity = new Vector3 (rb.velocity.x, verticalVelocity, 0);
