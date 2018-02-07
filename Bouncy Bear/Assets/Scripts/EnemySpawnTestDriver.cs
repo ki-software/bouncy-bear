@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBase : MonoBehaviour {
+public class EnemySpawnTestDriver : MonoBehaviour {
+
+    public EnemySpawner es;
 
 	// Use this for initialization
 	void Start () {
@@ -11,14 +13,9 @@ public class EnemyBase : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
+		if (Input.GetKeyDown(KeyCode.K))
         {
-            Debug.Log("Enemy Hit Player");
+            es.SpawnEnemy(es.GetRandomEnemyType(), new Vector3(3.5f, -2.0f, 0.1f));
         }
-    }
+	}
 }
