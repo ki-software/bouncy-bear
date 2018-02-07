@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23312878288447214}
   - component: {fileID: 114573181566249458}
   m_Layer: 0
-  m_Name: FloorPillar
+  m_Name: Floor Pillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

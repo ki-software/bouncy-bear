@@ -401,6 +401,48 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 75125420}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &184741713
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4664684320325892, guid: 4d9b0024d9000b446a530225f0147b4e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664684320325892, guid: 4d9b0024d9000b446a530225f0147b4e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664684320325892, guid: 4d9b0024d9000b446a530225f0147b4e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664684320325892, guid: 4d9b0024d9000b446a530225f0147b4e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664684320325892, guid: 4d9b0024d9000b446a530225f0147b4e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664684320325892, guid: 4d9b0024d9000b446a530225f0147b4e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664684320325892, guid: 4d9b0024d9000b446a530225f0147b4e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664684320325892, guid: 4d9b0024d9000b446a530225f0147b4e, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 4d9b0024d9000b446a530225f0147b4e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &185766801
 Prefab:
   m_ObjectHideFlags: 0
@@ -2260,6 +2302,16 @@ Prefab:
         type: 2}
       propertyPath: bounceVelocity
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091853817743546, guid: 2adcf35ed0d2b474595aabf71e06fde7,
+        type: 2}
+      propertyPath: horizontalDrag
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091853817743546, guid: 2adcf35ed0d2b474595aabf71e06fde7,
+        type: 2}
+      propertyPath: acceleration
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2adcf35ed0d2b474595aabf71e06fde7, type: 2}

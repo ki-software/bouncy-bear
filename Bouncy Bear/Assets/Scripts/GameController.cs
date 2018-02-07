@@ -28,8 +28,14 @@ public class GameController : MonoBehaviour {
 
 
 	public void PlayerHitFloor() {
-		ChangeFloor ();
 		player.BounceFloor ();
+		if (CoinGenerator.CG.CheckGeneratable()) {
+			FloorPillar pillar = floor.GetRandomSpace ();
+			if (pillar != null) {
+				CoinGenerator.CG.GenerateAt (pillar.transform.position.x);
+			}
+		}
+		ChangeFloor ();
 	}
 
 	public void PlayerHitWall() {
