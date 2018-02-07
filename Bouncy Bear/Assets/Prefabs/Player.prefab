@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 23688306152148422}
   m_Layer: 0
   m_Name: PlayerModel
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,3 +169,4 @@ MonoBehaviour:
   gravity: 2
   verticalVelocity: 13
   horizontalDrag: 1
+  bounceVelocity: 1
