@@ -103,6 +103,10 @@ public class Player : MonoBehaviour {
 		if (other.transform.root.CompareTag("Floor")) {
 			GameController.GC.PlayerHitFloor ();
 		}
+		else if (other.transform.root.CompareTag("Coin")) {
+			GameController.GC.PlayerHitCoin ();
+			other.transform.root.gameObject.GetComponent<Coin>().Collected ();
+		}
 	}
 
 	public void BounceFloor() {

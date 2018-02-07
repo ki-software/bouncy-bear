@@ -48,6 +48,9 @@ public class Floor : MonoBehaviour {
         }
 
         int rand = Random.Range(0, f.Count - 1);
+		if (rand == 0) {
+			return null;
+		}
         return f[rand];
     }
 
